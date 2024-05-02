@@ -1,0 +1,26 @@
+1. By.id("password") - поле password
+2. By.name("user-name") - поле username
+3. By.className("submit-button btn_action") - кнопка сабмит
+4. By.tagName("h4") - текст для логина и пароля
+5. By.linkText(“Facebook”) - сылка на Facebook
+6. By.partialLinkText("LinkedIn") - сылка на инсту
+7. //span[@class='title'] - надпись "Products"
+8. //div[text()='Swag Labs'] - надпись
+9. //button[contains(@id, 'burger-menu')]
+10. //div[contains(text(), 'Water-resistant')] - текст велосипедного фонаря
+11. //div[contains(text(), 'American Apparel')]/ancestor::div[3]//a - картинка майки
+12. //div[@class='inventory_list']/descendant::div[@class='inventory_item'] - блок всех товаров
+13. //a[@id='about_sidebar_link']/following::a - кнопка логаут
+14. //div[@class='inventory_item']/parent::div - блок всех товаров
+15. //a[@id='about_sidebar_link']/preceding::a - кнопка "All item"
+16. //div[@class='inventory_item_price' and text()='7.99'] - товар по 7.99
+17. .bm-item - набор кнопок бургер меню
+18. .bm-item.menu-item - набор кнопок бургер меню
+19. .item_pricebar .btn_small - кнопка "Remove" в корзине
+20. #continue-shopping - кнопка в корзине
+21. button.checkout_button - кнопка Checkout в корзине
+22. [class=inventory_item_name]  - наименование товара
+23. [class*=item_desc] - описание товара
+24. input[placeholder~=Code] - поле ZipCode
+25. input[placeholder^=First]
+26. [id$=cel] - кнопка Cancel
