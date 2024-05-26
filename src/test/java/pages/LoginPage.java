@@ -37,8 +37,7 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).isDisplayed();
     }
 
-    public boolean checkErrorText() {
-        String errorText = "Epic sadface: Username and password do not match any user in this service";
+    public boolean checkErrorText(String errorText) {
         return errorText.equals(driver.findElement(ERROR_MESSAGE).getText());
     }
 

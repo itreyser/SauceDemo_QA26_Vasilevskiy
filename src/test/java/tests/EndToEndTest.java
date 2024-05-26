@@ -11,7 +11,7 @@ public class EndToEndTest extends BaseTest {
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickAddToCardButton("Sauce Labs Bike Light");
         productsPage.clickToBasket();
-        yourCardPage.clickToCheckout();
+        yourCartPage.clickToCheckout();
         yourInformationPage.setFirstNameValue("Slava");
         yourInformationPage.setLastNameValue("Jyk");
         yourInformationPage.setZipCodeValue("123");

@@ -35,7 +35,7 @@ public class ProductsPage extends BasePage {
     }
 
     private WebElement getProductCardByName(String productName) {
-        String locator = String.format("//div[text()='%s']/ancestor::div[@class='inventory_item']", productName);
+        String locator = String.format(ALL_CART, productName);
         return driver.findElement(By.xpath(locator));
     }
 }

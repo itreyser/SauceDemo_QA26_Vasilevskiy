@@ -13,8 +13,8 @@ public class YourCardTest extends BaseTest {
         productsPage.clickAddToCardButton(firstProduct);
         productsPage.clickAddToCardButton(secondProduct);
         productsPage.clickToBasket();
-        Assert.assertTrue(yourCardPage.productInCard(firstProduct), "проверка первого продукта");
-        Assert.assertTrue(yourCardPage.productInCard(secondProduct), "проверка второго продукта");
+        Assert.assertTrue(yourCartPage.productInCard(firstProduct), "проверка первого продукта");
+        Assert.assertTrue(yourCartPage.productInCard(secondProduct), "проверка второго продукта");
     }
 
     @Test
@@ -22,9 +22,9 @@ public class YourCardTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickToBasket();
-        Assert.assertTrue(yourCardPage.productInCard("Sauce Labs Backpack"), "проверка продукта в корзине");
-        yourCardPage.clickToRemoveButton("Sauce Labs Backpack");
-        Assert.assertFalse(yourCardPage.productInCard("Sauce Labs Backpack"), "проверка удаления продукта");
+        Assert.assertTrue(yourCartPage.productInCard("Sauce Labs Backpack"), "проверка продукта в корзине");
+        yourCartPage.clickToRemoveButton("Sauce Labs Backpack");
+        Assert.assertFalse(yourCartPage.productInCard("Sauce Labs Backpack"), "проверка удаления продукта");
 
     }
 }

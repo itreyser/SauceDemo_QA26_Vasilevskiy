@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class YourCardPage extends BasePage {
+public class YourCartPage extends BasePage {
 
     private final By REMOVE_BUTTON = By.cssSelector("button[id=remove-sauce-labs-backpack]");
     private final By CHECKOUT_BUTTON = By.cssSelector("button[id=checkout]");
@@ -17,7 +17,7 @@ public class YourCardPage extends BasePage {
     private final By ALL_ITEM = By.className("inventory_item_name");
 
 
-    public YourCardPage(WebDriver driver) {
+    public YourCartPage(WebDriver driver) {
         super(driver);
     }
 
@@ -30,7 +30,7 @@ public class YourCardPage extends BasePage {
     }
 
     private WebElement getProductCardByName(String productName) {
-        String locator = String.format("//div[text()='%s']/ancestor::div[@class='cart_item']", productName);
+        String locator = String.format(ALL_CART, productName);
         return driver.findElement(By.xpath(locator));
     }
 

@@ -11,7 +11,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
-    protected YourCardPage yourCardPage;
+    protected YourCartPage yourCartPage;
     protected YourInformationPage yourInformationPage;
     protected CheckoutPage checkoutPage;
     protected CompletePage completePage;
@@ -24,7 +24,7 @@ public class BaseTest {
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
-        yourCardPage = new YourCardPage(driver);
+        yourCartPage = new YourCartPage(driver);
         yourInformationPage = new YourInformationPage(driver);
         checkoutPage = new CheckoutPage(driver);
         completePage = new CompletePage(driver);
