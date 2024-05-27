@@ -37,8 +37,8 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).isDisplayed();
     }
 
-    public boolean checkErrorText(String errorText) {
-        return errorText.equals(driver.findElement(ERROR_MESSAGE).getText());
+    public String getErrorText() {
+        return driver.findElement(ERROR_MESSAGE).getText();
     }
 
 

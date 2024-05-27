@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
     public void negativeLoginTest(){
         loginPage.login("sdf", "4324fsd");
         Assert.assertTrue(loginPage.isDisplayMessageError());
-        Assert.assertTrue(loginPage.checkErrorText("Epic sadface: Username and password do not match any user in this service"));
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
 }

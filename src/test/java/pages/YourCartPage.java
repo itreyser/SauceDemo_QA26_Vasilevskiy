@@ -15,6 +15,7 @@ public class YourCartPage extends BasePage {
     private final By ITEM_DESCRIPTION = By.className("inventory_item_desc");
 
     private final By ALL_ITEM = By.className("inventory_item_name");
+    private final String ALL_CART = "//div[text()='%s']/ancestor::div[@class='cart_item']";
 
 
     public YourCartPage(WebDriver driver) {

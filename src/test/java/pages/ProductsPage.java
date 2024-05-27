@@ -9,6 +9,7 @@ public class ProductsPage extends BasePage {
     private final By ADD_TO_CARD_BUTTON = By.cssSelector("button[id^='add-to-cart']");
     private final By ITEM_PRICE = By.cssSelector("div.inventory_item_price");
     private final By ITEM_DESCRIPTION = By.className("inventory_item_desc");
+    private final String ALL_CART = "//div[text()='%s']/ancestor::div[@class='cart_item']";
 
     public ProductsPage(WebDriver driver) {
         super(driver);

@@ -12,6 +12,7 @@ public class CheckoutPage extends BasePage {
     private final By ITEM_DESCRIPTION = By.className("inventory_item_desc");
     private final By TAX_PRICE = By.className("summary_tax_label");
     private final By TOTAL_PRICE = By.className("summary_total_label");
+    private final String ALL_CART = "//div[text()='%s']/ancestor::div[@class='cart_item']";
 
 
     public CheckoutPage(WebDriver driver) {
