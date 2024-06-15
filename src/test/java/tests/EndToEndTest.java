@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 
 public class EndToEndTest extends BaseTest {
 
-    @Test
+
+    @Test(groups = "withSuccessLogin", retryAnalyzer = Retry.class,
+            description = "Критический путь пользователя")
     public void successBuyProduct() {
-        loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickAddToCardButton("Sauce Labs Bike Light");
         productsPage.clickToBasket();

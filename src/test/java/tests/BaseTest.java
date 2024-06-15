@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import pages.*;
 
 import java.time.Duration;
-
+@Listeners(TestListener.class)
 public class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
@@ -16,12 +16,11 @@ public class BaseTest {
     protected CheckoutPage checkoutPage;
     protected CompletePage completePage;
 
-    @BeforeMethod(alwaysRun = true)
-    public void preCondition() {
+    @BeforeClass(alwaysRun = true)
+    public void preCondForClass() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         yourCartPage = new YourCartPage(driver);
@@ -30,8 +29,26 @@ public class BaseTest {
         completePage = new CompletePage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
+
+    @BeforeMethod(onlyForGroups = "withSuccessLogin")
+    public void preConditionForGroup() {
+        loginPage.login("standard_user", "secret_sauce");
+    }
+
+    @AfterMethod()
     public void postCondition() {
+        driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    public void preCondition() {
+        driver.get("https://www.saucedemo.com/");
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void postConditionForClass() {
         driver.quit();
     }
+
 }
