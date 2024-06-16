@@ -11,7 +11,6 @@ public class LoginTest extends BaseTest {
 
         loginPage.login("standard_user", "secret_sauce");
         Assert.assertTrue(productsPage.isShoppingCardDisplay());
-        productsPage.logOut();
     }
 
     @Test(dataProvider = "Негативные тестовые данные для логина",

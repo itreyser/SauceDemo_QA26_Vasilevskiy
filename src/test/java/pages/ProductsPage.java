@@ -43,10 +43,4 @@ public class ProductsPage extends BasePage {
         return driver.findElement(By.xpath(locator));
     }
 
-    public void logOut() {
-        driver.get("https://www.saucedemo.com/inventory.html");
-        driver.findElement(BURGER_MENU).click();
-        driver.findElement(LOGOUT_SIDE_BAR).click();
-    }
-
 }
