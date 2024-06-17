@@ -9,7 +9,10 @@ public class ProductsPage extends BasePage {
     private final By ADD_TO_CARD_BUTTON = By.cssSelector("button[id^='add-to-cart']");
     private final By ITEM_PRICE = By.cssSelector("div.inventory_item_price");
     private final By ITEM_DESCRIPTION = By.className("inventory_item_desc");
-    private final String ALL_CART = "//div[text()='%s']/ancestor::div[@class='cart_item']";
+    private final String ALL_CART = "//div[text()='%s']/ancestor::div[@class='inventory_container']";
+
+    private final By BURGER_MENU = By.id("react-burger-menu-btn");
+    private final By LOGOUT_SIDE_BAR = By.id("logout_sidebar_link");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -39,4 +42,5 @@ public class ProductsPage extends BasePage {
         String locator = String.format(ALL_CART, productName);
         return driver.findElement(By.xpath(locator));
     }
+
 }

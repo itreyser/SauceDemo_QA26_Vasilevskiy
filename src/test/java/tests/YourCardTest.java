@@ -1,30 +1,41 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class YourCardTest extends BaseTest {
 
-    @Test
-    public void addProductToCard() {
-        String firstProduct = "Sauce Labs Backpack";
-        String secondProduct = "Sauce Labs Bike Light";
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.clickAddToCardButton(firstProduct);
-        productsPage.clickAddToCardButton(secondProduct);
+
+    @Test(description = "Успешное добавление продукта в корзину",
+            groups = "withSuccessLogin", dataProvider = "testDataForAddProductToCard")
+    public void addProductToCard(String product) {
+        productsPage.clickAddToCardButton(product);
         productsPage.clickToBasket();
-        Assert.assertTrue(yourCartPage.productInCard(firstProduct), "проверка первого продукта");
-        Assert.assertTrue(yourCartPage.productInCard(secondProduct), "проверка второго продукта");
+        Assert.assertTrue(yourCartPage.productInCard(product), "проверка продукта");
     }
 
-    @Test
+    @Test(groups = "withSuccessLogin",
+    description = "Удаление продукта из корзины")
     public void deleteProductFromCard() {
-        loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickToBasket();
         Assert.assertTrue(yourCartPage.productInCard("Sauce Labs Backpack"), "проверка продукта в корзине");
         yourCartPage.clickToRemoveButton("Sauce Labs Backpack");
         Assert.assertFalse(yourCartPage.productInCard("Sauce Labs Backpack"), "проверка удаления продукта");
+
+    }
+
+    @DataProvider
+    public Object[][] testDataForAddProductToCard() {
+        return new Object[][]{
+                {"Sauce Labs Backpack"},
+                {"Sauce Labs Bike Light"},
+                {"Sauce Labs Bolt T-Shirt"},
+                {"Sauce Labs Fleece Jacket"},
+                {"Sauce Labs Onesie"},
+                {"Test.allTheThings() T-Shirt (Red)"}
+        };
 
     }
 }

@@ -3,10 +3,11 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CheckoutTest extends BaseTest{
-    @Test
-    public void checkTotalPriceWithTax(){
-        loginPage.login("standard_user", "secret_sauce");
+public class CheckoutTest extends BaseTest {
+
+    @Test(groups = "withSuccessLogin",
+            description = "Проверка полной стоимости продукта + таксы")
+    public void checkTotalPriceWithTax() {
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickAddToCardButton("Sauce Labs Bike Light");
         productsPage.clickToBasket();
