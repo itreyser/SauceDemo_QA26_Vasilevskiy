@@ -7,17 +7,20 @@ import org.testng.annotations.Test;
 public class YourCardTest extends BaseTest {
 
 
-    @Test(description = "Успешное добавление продукта в корзину",
-            groups = "withSuccessLogin", dataProvider = "testDataForAddProductToCard")
+    @Test(groups = {"Smoke"},
+            description = "Успешное добавление продукта в корзину",
+            dataProvider = "testDataForAddProductToCard")
     public void addProductToCard(String product) {
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton(product);
         productsPage.clickToBasket();
         Assert.assertTrue(yourCartPage.productInCard(product), "проверка продукта");
     }
 
-    @Test(groups = "withSuccessLogin",
+    @Test(groups = {"Regression"},
     description = "Удаление продукта из корзины")
     public void deleteProductFromCard() {
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickToBasket();
         Assert.assertTrue(yourCartPage.productInCard("Sauce Labs Backpack"), "проверка продукта в корзине");

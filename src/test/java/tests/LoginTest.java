@@ -6,14 +6,16 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Успешная авторизация пользователя")
+    @Test(groups = {"Smoke"},
+            description = "Успешная авторизация пользователя")
     public void positiveLoginTest() {
 
         loginPage.login("standard_user", "secret_sauce");
         Assert.assertTrue(productsPage.isShoppingCardDisplay());
     }
 
-    @Test(dataProvider = "Негативные тестовые данные для логина",
+    @Test(groups = {"Regression"},
+            dataProvider = "Негативные тестовые данные для логина",
             description = "Негативный тест на авторизацию и проверка сообщения об ошибке")
     public void negativeLoginTest(String email, String password, String errorMessage) {
         loginPage.login(email, password);
