@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
 
-    @Test(groups = "withSuccessLogin",
+    @Test(groups = {"Regression"},
             description = "Проверка полной стоимости продукта + таксы")
     public void checkTotalPriceWithTax() {
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
         productsPage.clickAddToCardButton("Sauce Labs Bike Light");
         productsPage.clickToBasket();
