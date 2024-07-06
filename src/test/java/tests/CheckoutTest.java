@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -7,6 +10,8 @@ public class CheckoutTest extends BaseTest {
 
     @Test(groups = {"Regression"},
             description = "Проверка полной стоимости продукта + таксы")
+    @Description("Проверить стоимость продуктов Sauce Labs Backpack, Sauce Labs Bike Light")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkTotalPriceWithTax() {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");

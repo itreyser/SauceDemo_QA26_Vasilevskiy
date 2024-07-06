@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -27,6 +28,7 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_BUTTON).click();
     }
 
+    @Step("Авторизация с почтой '{email}'- и паролем - '{password}'")
     public void login(String email, String password) {
         setEmailValue(email);
         setPasswordValue(password);

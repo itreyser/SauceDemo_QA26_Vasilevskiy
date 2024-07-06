@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,6 +44,7 @@ public class YourCartPage extends BasePage {
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
     }
 
+    @Step("Переход к оплате")
     public void clickToCheckout() {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
@@ -52,7 +54,7 @@ public class YourCartPage extends BasePage {
         boolean flag = false;
         for (WebElement i : webElementList) {
             if (i.getText().equals(productName)) {
-                flag= true;
+                flag = true;
             }
         }
         return flag;
