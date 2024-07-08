@@ -1,14 +1,14 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
+import utils.DriverFactory;
+import utils.InvokedListener;
+import utils.TestListener;
 
-import java.time.Duration;
-
-@Listeners(TestListener.class)
+@Listeners({TestListener.class, InvokedListener.class})
 public class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
@@ -20,17 +20,9 @@ public class BaseTest {
 
     @Parameters("browserName")
     @BeforeClass(alwaysRun = true)
-    public void preCondForClass(@Optional("chrome") String browser) throws Exception {
-        if (browser.equals("chrome")) {
-            driver = new ChromeDriver();
-        } else if (browser.equals("edge")) {
-            driver = new EdgeDriver();
-        } else {
-            throw new Exception("Unsupported browser...");
-        }
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    public void preCondForClass(@Optional("chrome") String browser, ITestContext iTestContext) throws Exception {
+        driver = DriverFactory.getDriver(browser);
+        iTestContext.setAttribute("driver", driver);
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         yourCartPage = new YourCartPage(driver);

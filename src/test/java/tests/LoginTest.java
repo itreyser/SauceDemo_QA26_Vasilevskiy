@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,6 +10,7 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = {"Smoke"},
             description = "Успешная авторизация пользователя")
+    @Severity(SeverityLevel.BLOCKER)
     public void positiveLoginTest() {
 
         loginPage.login("standard_user", "secret_sauce");
@@ -17,6 +20,7 @@ public class LoginTest extends BaseTest {
     @Test(groups = {"Regression"},
             dataProvider = "Негативные тестовые данные для логина",
             description = "Негативный тест на авторизацию и проверка сообщения об ошибке")
+    @Severity(SeverityLevel.NORMAL)
     public void negativeLoginTest(String email, String password, String errorMessage) {
         loginPage.login(email, password);
         Assert.assertTrue(loginPage.isDisplayMessageError());

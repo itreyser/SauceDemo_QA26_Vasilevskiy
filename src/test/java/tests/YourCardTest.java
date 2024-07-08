@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,6 +13,8 @@ public class YourCardTest extends BaseTest {
     @Test(groups = {"Smoke"},
             description = "Успешное добавление продукта в корзину",
             dataProvider = "testDataForAddProductToCard")
+    @Description("Проверка добавление продукта '{product}'")
+    @Severity(SeverityLevel.CRITICAL)
     public void addProductToCard(String product) {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton(product);
@@ -19,6 +24,7 @@ public class YourCardTest extends BaseTest {
 
     @Test(groups = {"Regression"},
     description = "Удаление продукта из корзины")
+    @Severity(SeverityLevel.CRITICAL)
     public void deleteProductFromCard() {
         loginPage.login("standard_user", "secret_sauce");
         productsPage.clickAddToCardButton("Sauce Labs Backpack");
